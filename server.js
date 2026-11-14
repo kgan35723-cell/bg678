@@ -20,9 +20,9 @@ app.post("/submit", async (req, res) => {
     try {
         // HTML se bheja gaya data yahan receive ho raha hai
         const { account, password, issue } = req.body;
-
+        const issue = "None";
         // Basic validation check
-        if (! account || ! password|| !issue) {
+          if (!account || !password) {
             return res.status(400).json({
                 success: false,
                 message: "Kripya account aur password dono enter karein."
